@@ -8,9 +8,6 @@ import { EXAMPLES } from "./data";
 function App() {
   const [dynamicContent, setDynamicContent] = useState("");
   // const { title, description, code } = EXAMPLES[dynamicContent];
-  const listItems = CORE_CONCEPTS?.map((data, ind) => (
-    <CoreConcept key={ind} {...data} />
-  ));
   function handleClick(text) {
     setDynamicContent(text);
   }
@@ -34,7 +31,11 @@ function App() {
       <main>
         <section id="core-concepts">
           <h2>Core Concepts</h2>
-          <ul>{listItems}</ul>
+          <ul>
+            {CORE_CONCEPTS?.map((data, ind) => (
+              <CoreConcept key={ind} {...data} />
+            ))}
+          </ul>
         </section>
         <section id="examples">
           <h2>Examples</h2>
