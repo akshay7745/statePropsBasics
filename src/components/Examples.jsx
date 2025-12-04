@@ -1,6 +1,7 @@
 import TabButton from "./TabButton";
 import { EXAMPLES } from "../data";
 import { useState } from "react";
+import Section from "./Section";
 export default function Examples() {
   const [dynamicContent, setDynamicContent] = useState("");
 
@@ -22,8 +23,7 @@ export default function Examples() {
     );
   }
   return (
-    <section id="examples">
-      <h2>Examples</h2>
+    <Section title={"Examples"} id="examples">
       <menu>
         <TabButton
           isSelected={dynamicContent === "components"}
@@ -83,6 +83,6 @@ export default function Examples() {
             </div>
           )} */}
       {topicData}
-    </section>
+    </Section>
   );
 }
