@@ -2,6 +2,7 @@ import TabButton from "./TabButton";
 import { EXAMPLES } from "../data";
 import { useState } from "react";
 import Section from "./Section";
+import Tabs from "./Tabs";
 export default function Examples() {
   const [dynamicContent, setDynamicContent] = useState("");
 
@@ -24,42 +25,47 @@ export default function Examples() {
   }
   return (
     <Section title={"Examples"} id="examples">
-      <menu>
-        <TabButton
-          isSelected={dynamicContent === "components"}
-          onClick={() => {
-            handleClick("components");
-          }}
-        >
-          Components
-        </TabButton>
-        <TabButton
-          isSelected={dynamicContent === "jsx"}
-          onClick={() => {
-            handleClick("jsx");
-          }}
-        >
-          JSX
-        </TabButton>
-        <TabButton
-          isSelected={dynamicContent === "props"}
-          onClick={() => {
-            handleClick("props");
-          }}
-        >
-          Props
-        </TabButton>
-        <TabButton
-          isSelected={dynamicContent === "state"}
-          onClick={() => {
-            handleClick("state");
-          }}
-        >
-          State
-        </TabButton>
-      </menu>
-      {/*! first way using ternary operator  */}
-      {/* {dynamicContent ? (
+      <Tabs
+        ButtonsContainer="menu"
+        buttons={
+          <>
+            <TabButton
+              isSelected={dynamicContent === "components"}
+              onClick={() => {
+                handleClick("components");
+              }}
+            >
+              Components
+            </TabButton>
+            <TabButton
+              isSelected={dynamicContent === "jsx"}
+              onClick={() => {
+                handleClick("jsx");
+              }}
+            >
+              JSX
+            </TabButton>
+            <TabButton
+              isSelected={dynamicContent === "props"}
+              onClick={() => {
+                handleClick("props");
+              }}
+            >
+              Props
+            </TabButton>
+            <TabButton
+              isSelected={dynamicContent === "state"}
+              onClick={() => {
+                handleClick("state");
+              }}
+            >
+              State
+            </TabButton>
+          </>
+        }
+      >
+        {/*! first way using ternary operator  */}
+        {/* {dynamicContent ? (
             <div id="tab-content">
               <h3>{EXAMPLES[dynamicContent].title}</h3>
               <p>{EXAMPLES[dynamicContent].description}</p>
@@ -70,9 +76,9 @@ export default function Examples() {
           ) : (
             <div id="tab-content">Please select a topic</div>
           )} */}
-      {/*! second way using && operator  */}
+        {/*! second way using && operator  */}
 
-      {/* {!dynamicContent && <div id="tab-content">Please select a topic</div>}
+        {/* {!dynamicContent && <div id="tab-content">Please select a topic</div>}
           {dynamicContent && (
             <div id="tab-content">
               <h3>{EXAMPLES[dynamicContent].title}</h3>
@@ -82,7 +88,8 @@ export default function Examples() {
               </pre>
             </div>
           )} */}
-      {topicData}
+        {topicData}
+      </Tabs>
     </Section>
   );
 }
